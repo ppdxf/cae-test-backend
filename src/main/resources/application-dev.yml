@@ -1,0 +1,23 @@
+#开发环境配置
+
+server:
+  # 服务端口
+  port: 9090
+
+
+spring:
+  # 数据源配置，请修改为你项目的实际配置
+  datasource:
+    username: "root"
+    password: "123456"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cae-demo?useSSL=false&serverTimezone=UTC&characterEncoding=UTF8
+
+
+
+
+
+
+
+
+

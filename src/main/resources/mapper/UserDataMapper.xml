@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huawei.cae.mapper.UserDataMapper">
+
+    <resultMap id="BaseResultMap" type="com.huawei.cae.model.UserDataDo">
+        <id column="id" property="id"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="scan_num" jdbcType="INTEGER" property="scanNum"/>
+
+    </resultMap>
+
+    <select id="query" resultMap="BaseResultMap">
+        SELECT *
+        FROM user_scan
+        WHERE user_scan.user_name = #{userName}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO user_scan(user_name, scan_num)
+        VALUES (#{userName}, #{scanNum})
+    </insert>
+
+    <update id="updateTotal">
+        UPDATE user_scan
+        SET user_scan.scan_num = #{scanNum}
+        WHERE user_scan.user_name = #{userName}
+    </update>
+
+
+    <select id="getTotalScanNum" resultType="java.lang.Integer">
+        select sum(scan_num) AS count
+        from user_scan
+    </select>
+
+
+</mapper>
